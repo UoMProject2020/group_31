@@ -3,7 +3,7 @@ import json
 count=0
 #Hashtags of interest
 interested_text = ['accidents' , 'roadaccident' , 'fatality' , 'carcrash' , 'roadrage' , 'speedkills' , 'roadinjury' , 'roadsafety' , 'rashdriving','accident','caraccident','distracteddriving','drivesafe','car_accident','road_safety','distracted_driving','car_driving','rash_driving','speedingkills','speeding_kills']
-with open('C:\\Users\\SHUBHAM\\Documents\\Sem 1 (2020)\\Cluster & Cloud Computing\\Assignment\\Assignment2\\twitter-melb.json\\twitter-melb.json',encoding='utf-8') as f:
+with open('Enter path of data file',encoding='utf-8') as f:
 	for line in f:
 			count = count+1
 			line  = line.strip()
