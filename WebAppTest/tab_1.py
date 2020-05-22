@@ -14,9 +14,14 @@ y = 100 * (len(ntweets) / len(refined_tweets))
 z = 100 * ((len(refined_tweets) - len(ntweets) - len(ptweets)) / len(refined_tweets))
 
 sentiments = [ 'Positive', 'Negative', 'Neutral' ]
+parties = ['Australian Labor Party','Liberal National Party']
+labor_party_votes,liberal_party_votes = sa.create_views_voter("votersdata","Sydney")
 
-data = go.Pie(values=[ len(ptweets), len(ntweets), len(refined_tweets) ],
-              showlegend=False)
+
+data = go.Pie(labels=parties,values =[labor_party_votes,liberal_party_votes] )
+
+# data = go.Pie(values=[ len(ptweets), len(ntweets), len(refined_tweets) ],
+#               showlegend=False)
 
 data1 = go.Pie(labels=sentiments,
                values=[ x, y, z ],
