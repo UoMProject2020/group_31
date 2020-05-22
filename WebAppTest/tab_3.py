@@ -3,12 +3,14 @@ import dash_html_components as html
 import dash_core_components as dcc
 import plotly.graph_objs as go
 
-df = px.data.iris()
+df = px.data.gapminder().query("year == 2007")
+fig = px.scatter_geo(df, locations="iso_alpha",
+                     size="pop", # size of markers, "pop" is one of the columns of gapminder
+                     )
 
 tab_3_layout = html.Div([
     html.H3('IRIS'),
     dcc.Graph(id='iris',
-              figure=px.density_heatmap(df, x="sepal_width", y="sepal_length", marginal_x="rug",
-                                        marginal_y="histogram")),
+              figure=fig),
     html.Div(id='page-2-content')
 ])

@@ -1,5 +1,21 @@
 import re
 from textblob import TextBlob
+import couchdb
+import couchdb.design
+
+
+def create_views(db):
+    view_key = []
+
+    count_map = 'function(doc) { if(doc.full_text.includes("Liberal") && doc.user.location.includes("melbourne")) {' \
+                'emit(doc.full_text);}} '
+    view = couchdb.design.ViewDefinition('twitter', 'Liberal_melbourne_tweets', count_map)
+    view.sync(db)
+
+    for doc in db.view('twitter/Liberal_melbourne_tweets'):
+        view_key.append(doc[ 'key' ])
+
+    return view_key
 
 
 def clean_tweet(tweet):
