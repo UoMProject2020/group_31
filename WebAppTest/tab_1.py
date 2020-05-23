@@ -15,8 +15,11 @@ z = 100 * ((len(refined_tweets) - len(ntweets) - len(ptweets)) / len(refined_twe
 
 sentiments = [ 'Positive', 'Negative', 'Neutral' ]
 parties = ['Australian Labor Party','Liberal National Party']
-labor_party_votes,liberal_party_votes = sa.create_views_voter("votersdata","Sydney")
-
+city = "Melbourne"
+result = requests.get(' http://127.0.0.1:5000/voters?city='+city).json()
+print(result)
+labor_party_votes=result["labor_party_votes"]
+liberal_party_votes = result["liberal_party_votes"]
 
 data = go.Pie(labels=parties,values =[labor_party_votes,liberal_party_votes] )
 
