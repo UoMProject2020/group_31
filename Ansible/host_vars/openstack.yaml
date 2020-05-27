@@ -1,0 +1,79 @@
+#--------------------------------
+#Group No. 31
+#Team Members
+#Akshay Agarwal, 1141290,Melbourne
+#Avi Patel,1143213,Melbourne
+#Monit Patel,1135025,Melbourne
+#Prabha Choudhary,1098776,Melbourne
+#Shubham Parakh,1098807,Melbourne
+#--------------------------------
+
+
+# Common vars
+availability_zone: melbourne-qh2-uom
+
+# Volume
+volume:
+  - vol_name: ansible_script_vol
+    description: "Volume for instance 4 deployed using ansible"
+    vol_size: 20
+  
+# Security group
+security_groups:
+  - name: ansible_script_ssh
+    description: "Security group for SSH access"
+    protocol: tcp
+    port_range_min: 22
+    port_range_max: 22
+    remote_ip_prefix: 0.0.0.0/0
+
+  - name: ansible_script_http
+    description: "Security group for HTTP"
+    protocol: tcp
+    port_range_min: 80
+    port_range_max: 80
+    remote_ip_prefix: 0.0.0.0/0
+
+  - name: ansible_script_https
+    description: "Security group for HTTPS"
+    protocol: tcp
+    port_range_min: 443
+    port_range_max: 443
+    remote_ip_prefix: 0.0.0.0/0
+
+#Adding sec groups for couchdb
+  - name: ansible_script_database
+    description: "Security group for couchdb"
+    protocol: tcp
+    port_range_min: 4369
+    port_range_max: 4369
+    remote_ip_prefix: 0.0.0.0/0
+  - name: ansible_script_database
+    description: "Security group for couchdb"
+    protocol: tcp
+    port_range_min: 5984
+    port_range_max: 5984
+    remote_ip_prefix: 0.0.0.0/0
+  - name: ansible_script_database
+    description: "Security group for couchdb"
+    protocol: tcp
+    port_range_min: 9100
+    port_range_max: 9200
+    remote_ip_prefix: 0.0.0.0/0
+
+  - name: ansible_script_ssh
+    description: "Security group for web application"
+    protocol: tcp
+    port_range_min: 8050
+    port_range_max: 8050
+    remote_ip_prefix: 0.0.0.0/0
+
+
+# Instance
+instance:
+  - name: ansible_script
+    volume: ansible_script_vol
+
+instance_image: 215f9775-483c-4e0a-b703-d21a5c966f2e #ubuntu with docker
+instance_key_name: ansible_script
+instance_flavor: uom.mse.1c4g
