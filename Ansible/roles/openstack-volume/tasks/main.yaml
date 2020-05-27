@@ -1,0 +1,24 @@
+---
+#--------------------------------
+#Group No. 31
+#Team Members
+#Akshay Agarwal, 1141290,Melbourne
+#Avi Patel,1143213,Melbourne
+#Monit Patel,1135025,Melbourne
+#Prabha Choudhary,1098776,Melbourne
+#Shubham Parakh,1098807,Melbourne
+#--------------------------------
+
+
+# Create volumes from vars
+- name: Create volume(s) on NeCTAR
+  os_volume:
+    display_name: '{{ item.vol_name }}'
+    description: '{{ item.description }}'
+    size: '{{ item.vol_size }}'
+    availability_zone: '{{ availability_zone }}'
+    wait: yes
+    timeout: 600
+    state: present
+  loop: '{{ volume }}'
+  register: os_vol
