@@ -1,0 +1,28 @@
+#--------------------------------
+#Group No. 31
+#Team Members
+#Akshay Agarwal, 1141290,Melbourne
+#Avi Patel,1143213,Melbourne
+#Monit Patel,1135025,Melbourne
+#Prabha Choudhary,1098776,Melbourne
+#Shubham Parakh,1098807,Melbourne
+#--------------------------------
+- hosts: localhost
+  vars_files:
+    - host_vars/openstack.yaml
+  gather_facts: true
+  roles:
+    - role: openstack-common
+    - role: openstack-volume
+    - role: openstack-security-group
+    - role: openstack-instance
+
+- hosts: Ansible_instance
+  vars_files:
+    - host_vars/service.yaml
+  gather_facts: true
+  roles:
+    - role: service-common
+
+
+
