@@ -1,2 +1,2 @@
-# twitter_tweets_parser
-twitter_tweets_parser
+# Group 31
+Group 31: Twitter analytics on Australian political tweets
