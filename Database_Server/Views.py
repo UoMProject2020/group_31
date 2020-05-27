@@ -1,13 +1,25 @@
+#--------------------------------
+#Group No. 31
+#Team Members
+#Akshay Agarwal, 1141290,Melbourne
+#Avi Patel,1143213,Melbourne
+#Monit Patel,1135025,Melbourne
+#Prabha Choudhary,1098776,Melbourne
+#Shubham Parakh,1098807,Melbourne
+#--------------------------------
 import couchdb
 import couchdb.design
+import os
 
 cities = ["Melbourne","Brisbane","Perth","Sydney","Adelaide"]
 states = ["VIC","QLD","WA","NSW","SA"]
 years = [2020,2019,2018,2017,2016,2015]
+
 def server_connection():
-    username = "admin"
-    password = "admin"
-    ip = "172.26.134.65"
+    ip = os.getenv('couchdb_ip')
+    username = os.getenv('couchdb_user')
+    password = os.getenv('couchdb_pass')
+
     server = couchdb.Server("http://" + username + ":" + password + "@" + ip + ":5984/")
     return server
 
